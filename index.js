@@ -6,6 +6,7 @@ import {
   getMousePosition,
   moveMouseDown,
   moveMouseLeft,
+  moveMouseRight,
   moveMouseUp,
 } from './src/handlers/index.js';
 
@@ -22,7 +23,7 @@ const commandHash = {
   mouse_up: moveMouseUp,
   mouse_down: moveMouseDown,
   mouse_left: moveMouseLeft,
-  mouse_right: () => {},
+  mouse_right: moveMouseRight,
 };
 
 const commands = {
