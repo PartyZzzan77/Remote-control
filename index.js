@@ -2,6 +2,7 @@ import { WebSocketServer } from 'ws';
 import { httpServer } from './src/http_server/index.js';
 import { mouse } from '@nut-tree/nut-js';
 import { drawSquare, getMousePosition } from './src/handlers/index.js';
+import { printWSParams } from './src/utils/helpers/printWSParams.js';
 
 const HTTP_PORT = 8181;
 const WSS_PORT = 8182;
@@ -32,7 +33,9 @@ const commands = {
 const wss = new WebSocketServer({ port: WSS_PORT, httpServer });
 const sockets = [];
 
-wss.on('connection', (ws) => {
+wss.on('connection', (ws,req) => {
+  printWSParams(req);
+
   ws.on('message', async (data) => {
     const [command, ...coordinates] = data.toString().split(' ');
 
