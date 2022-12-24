@@ -2,6 +2,7 @@ import { WebSocketServer } from 'ws';
 import { httpServer } from './src/http_server/index.js';
 import { printWSParams } from './src/utils/helpers/printWSParams.js';
 import {
+  drawCircle,
   drawRectangle,
   drawSquare,
   getMousePosition,
@@ -18,7 +19,7 @@ httpServer.listen(HTTP_PORT);
 
 const commandHash = {
   mouse_position: getMousePosition,
-  draw_circle: () => {},
+  draw_circle: drawCircle,
   draw_square: drawSquare,
   draw_rectangle: drawRectangle,
   mouse_up: moveMouseUp,
@@ -76,6 +77,9 @@ wss.on('connection', (ws, req) => {
       const [offset] = coordinates;
 
       commandHash[commands.mouse_right](offset);
+      ws.send(command);
+    } else if (command === commands.draw_circle) {
+      commandHash[commands.draw_circle](coordinates);
       ws.send(command);
     }
   });
