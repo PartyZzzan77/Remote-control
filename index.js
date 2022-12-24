@@ -33,7 +33,7 @@ const commands = {
 const wss = new WebSocketServer({ port: WSS_PORT, httpServer });
 const sockets = [];
 
-wss.on('connection', (ws,req) => {
+wss.on('connection', (ws, req) => {
   printWSParams(req);
 
   ws.on('message', async (data) => {

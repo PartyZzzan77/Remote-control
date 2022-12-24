@@ -9,12 +9,13 @@
         "start:dev": "nodemon ./index.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "author": "Andrei Auchynnikau",
+    "author": "PartyZzzan77",
     "keywords": [],
     "license": "ISC",
     "devDependencies": {
         "@types/node": "^18.11.17",
-        "nodemon": "^2.0.16"
+        "nodemon": "^2.0.16",
+        "prettier": "^2.8.1"
     },
     "dependencies": {
         "@nut-tree/nut-js": "^2.3.0",
