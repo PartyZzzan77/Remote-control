@@ -1,11 +1,11 @@
 import { WebSocketServer } from 'ws';
 import { httpServer } from './src/http_server/index.js';
-import { mouse } from '@nut-tree/nut-js';
-import { drawSquare, getMousePosition } from './src/handlers/index.js';
 import { printWSParams } from './src/utils/helpers/printWSParams.js';
+import { drawSquare, getMousePosition, moveMouseUp } from './src/handlers/index.js';
 
 const HTTP_PORT = 8181;
 const WSS_PORT = 8182;
+
 httpServer.listen(HTTP_PORT);
 
 const commandHash = {
@@ -13,7 +13,7 @@ const commandHash = {
   draw_circle: () => {},
   draw_square: drawSquare,
   draw_rectangle: () => {},
-  mouse_up: () => {},
+  mouse_up: moveMouseUp,
   mouse_down: () => {},
   mouse_left: () => {},
   mouse_right: () => {},
@@ -46,6 +46,11 @@ wss.on('connection', (ws, req) => {
       const [width] = coordinates;
 
       commandHash[commands.draw_square](width);
+      ws.send(command);
+    } else if (command === commands.mouse_up) {
+      const [offset] = coordinates;
+
+      commandHash[commands.mouse_up](offset);
       ws.send(command);
     }
   });
