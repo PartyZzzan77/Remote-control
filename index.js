@@ -1,7 +1,13 @@
 import { WebSocketServer } from 'ws';
 import { httpServer } from './src/http_server/index.js';
 import { printWSParams } from './src/utils/helpers/printWSParams.js';
-import { drawSquare, getMousePosition, moveMouseDown, moveMouseUp } from './src/handlers/index.js';
+import {
+  drawSquare,
+  getMousePosition,
+  moveMouseDown,
+  moveMouseLeft,
+  moveMouseUp,
+} from './src/handlers/index.js';
 
 const HTTP_PORT = 8181;
 const WSS_PORT = 8182;
@@ -15,7 +21,7 @@ const commandHash = {
   draw_rectangle: () => {},
   mouse_up: moveMouseUp,
   mouse_down: moveMouseDown,
-  mouse_left: () => {},
+  mouse_left: moveMouseLeft,
   mouse_right: () => {},
 };
 
