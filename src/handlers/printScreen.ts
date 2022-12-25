@@ -1,21 +1,19 @@
+import { mouse } from '@nut-tree/nut-js';
 import Jimp from 'jimp';
 import robot from 'robotjs';
-import { mouse } from '@nut-tree/nut-js';
 import { Constants } from '../utils/constants';
-import { scanImage } from '../utils/helpers';
+import { scanImage } from '../utils/helpers/index.js';
 
 export const printScreen = async () => {
     try {
+        const w = Constants.SCREEN_SHOT_WIDTH;
+        const h = Constants.SCREENSHOT_HEIGHT;
         const { x, y } = await mouse.getPosition();
-        const imageTarget = robot.screen.capture(x, y, Constants.SCREEN_SHOT_WIDTH, Constants.SCREENSHOT_HEIGHT);
+        const bitmap = robot.screen.capture(x, y, w, h);
+        const buffer = await scanImage(bitmap);
+        const getBase64 = await buffer.getBase64Async(buffer.getMIME());
 
-        const jArea = new Jimp(Constants.SCREEN_SHOT_WIDTH, Constants.SCREENSHOT_HEIGHT);
-
-        await scanImage(jArea, imageTarget);
-
-        const getBase64 = await jArea.getBase64Async(jArea.getMIME());
-
-        return getBase64.slice(22);
+        return getBase64.split(',')[1];
     } catch (err) {
         return console.error(err);
     }
