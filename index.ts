@@ -13,6 +13,7 @@ import {
     moveMouseLeft,
     moveMouseRight,
     moveMouseUp,
+    printScreen,
 } from './src/handlers/index.js';
 
 httpServer.listen(HTTP_PORT);
@@ -26,6 +27,7 @@ const commandHash = {
     mouse_down: moveMouseDown,
     mouse_left: moveMouseLeft,
     mouse_right: moveMouseRight,
+    prnt_scrn: printScreen,
 };
 
 const wss = new WebSocketServer({ port: WSS_PORT });
@@ -60,6 +62,9 @@ wss.on('connection', (ws: WebSocket, req: IncomingMessage) => {
         } else if (command === COMMANDS.MOUSE_UP) {
             commandHash[COMMANDS.MOUSE_UP](coordinates[0]);
             ws.send(command);
+        } else {
+            const screenShot = await commandHash[COMMANDS.PRINT_SCREEN]();
+            ws.send(`${command} ${screenShot}`);
         }
     });
 

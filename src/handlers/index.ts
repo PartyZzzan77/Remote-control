@@ -6,3 +6,4 @@ export { moveMouseDown } from './moveMouseDown.js';
 export { moveMouseLeft } from './moveMouseLeft.js';
 export { moveMouseRight } from './moveMouseRight.js';
 export { drawCircle } from './drawCircle.js';
+export { printScreen } from './printScreen.js';
