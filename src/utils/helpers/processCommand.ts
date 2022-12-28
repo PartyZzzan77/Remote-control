@@ -1,7 +1,7 @@
 
 import { WebSocket } from 'ws';
 import { COMMANDS } from '../Constants/COMMANDS';
-import { commandHash } from './commandsHash.js';
+import { commandHash } from '../commandsHash.js';
 
 export const processCommand = async (ws: WebSocket, command: string, commandList: typeof commandHash, coordinates: string[],): Promise<void> => {
     if (command === COMMANDS.MOUSE_POSITION) {

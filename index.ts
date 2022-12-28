@@ -4,7 +4,7 @@ import { IncomingMessage } from 'http';
 import { httpServer } from './src/http_server/index.js';
 import { printWSParams } from './src/utils/helpers/printWSParams.js';
 import { HTTP_PORT, WSS_PORT } from './config.js';
-import { commandHash } from './src/utils/helpers/commandsHash.js';
+import { commandHash } from './src/utils/commandsHash.js';
 
 httpServer.listen(HTTP_PORT);
 

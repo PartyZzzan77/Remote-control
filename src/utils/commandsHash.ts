@@ -1,4 +1,4 @@
-import { drawCircle, drawRectangle, drawSquare, getMousePosition, moveMouseDown, moveMouseLeft, moveMouseRight, moveMouseUp, printScreen } from '../../handlers/index.js';
+import { drawCircle, drawRectangle, drawSquare, getMousePosition, moveMouseDown, moveMouseLeft, moveMouseRight, moveMouseUp, printScreen } from '../handlers/index.js';
 
 export const commandHash = {
     mouse_position: getMousePosition,
