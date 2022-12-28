@@ -4,8 +4,9 @@ import { Constants } from '../utils/constants.js';
 
 export const drawRectangle = async (offset: string[]): Promise<void> => {
     const [w, h] = offset;
-    const width = parseInt(w);
+    let width = parseInt(w);
     const height = parseInt(h);
+    width = width === height ? height * 2 : width;
 
     if (w && h) {
         await pressLeftBTNMouse();
