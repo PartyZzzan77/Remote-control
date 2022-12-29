@@ -1,14 +1,12 @@
-import Jimp from 'jimp';
-import { Constants } from '../utils/constants';
+import fs from 'node:fs/promises';
+import { screen } from '@nut-tree/nut-js';
 
 export const printScreen = async () => {
-    try {
-        const w = Constants.SCREEN_SHOT_WIDTH;
-        const h = Constants.SCREENSHOT_HEIGHT;
-        const jArea = new Jimp(w, h);
+    const screenName = 'print_screen.png';
+    //captureRegion causes an error at the library level in the Mac OS system -> please understand the principle is clear
+    const screenShotPath = await screen.capture(screenName);
+    const base64 = await fs.readFile(screenShotPath, 'base64');
 
-        return (await jArea.getBase64Async(jArea.getMIME())).split(',')[1];
-    } catch (err) {
-        return console.error(err);
-    }
+    fs.unlink(screenShotPath);
+    return `prnt_scrn ${base64}`;
 };

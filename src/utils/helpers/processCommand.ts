@@ -29,7 +29,8 @@ export const processCommand = async (ws: WebSocket, command: string, commandList
         commandList[COMMANDS.MOUSE_UP](coordinates[0]);
         ws.send(command);
     } else {
-        const screenShot = await commandList[COMMANDS.PRINT_SCREEN]();
-        ws.send(`${command} ${screenShot}`);
+        const test = await commandList[COMMANDS.PRINT_SCREEN]();
+
+        ws.send(test);
     }
 };
