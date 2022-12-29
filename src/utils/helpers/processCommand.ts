@@ -29,8 +29,8 @@ export const processCommand = async (ws: WebSocket, command: string, commandList
         commandList[COMMANDS.MOUSE_UP](coordinates[0]);
         ws.send(command);
     } else {
-        const test = await commandList[COMMANDS.PRINT_SCREEN]();
+        const base64 = await commandList[COMMANDS.PRINT_SCREEN]();
 
-        ws.send(test);
+        ws.send(base64);
     }
 };
