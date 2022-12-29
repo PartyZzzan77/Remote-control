@@ -18,10 +18,8 @@
         "@typescript-eslint/eslint-plugin": "^5.46.1",
         "@typescript-eslint/parser": "^5.46.1",
         "dotenv": "^16.0.3",
-        "jimp": "^0.16.1",
         "nodemon": "^2.0.16",
         "prettier": "^2.8.1",
-        "robotjs": "^0.6.0",
         "ts-node": "^10.9.1"
     },
     "dependencies": {
