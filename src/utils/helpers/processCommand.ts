@@ -6,7 +6,7 @@ import { commandHash } from '../commandsHash.js';
 export const processCommand = async (ws: WebSocket, command: string, commandList: typeof commandHash, coordinates: string[],): Promise<void> => {
     if (command === COMMANDS.MOUSE_POSITION) {
         const position = await commandList[COMMANDS.MOUSE_POSITION]();
-        ws.send(position);
+        ws.send(`${command} ${position}`);
     } else if (command === COMMANDS.DRAW_CIRCLE) {
         commandList[COMMANDS.DRAW_CIRCLE](coordinates);
         ws.send(command);
