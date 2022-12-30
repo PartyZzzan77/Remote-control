@@ -1,4 +1,5 @@
-import { mouse, straightTo, Point } from '@nut-tree/nut-js';
+import { mouse, Point, straightTo } from '@nut-tree/nut-js';
+
 import { Constants } from '../utils/constants';
 import { pressLeftBTNMouse, releaseLeftBTNMouse } from '../utils/helpers/index.js';
 

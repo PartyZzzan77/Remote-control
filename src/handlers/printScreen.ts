@@ -1,5 +1,5 @@
-import fs from 'node:fs/promises';
 import { screen } from '@nut-tree/nut-js';
+import fs from 'node:fs/promises';
 
 export const printScreen = async () => {
     try {

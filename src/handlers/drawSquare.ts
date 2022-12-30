@@ -1,9 +1,11 @@
-import { mouse, left, right, up, down } from '@nut-tree/nut-js';
+import { down, left, mouse, right, up } from '@nut-tree/nut-js';
+
 import { Constants } from '../utils/constants.js';
 import { pressLeftBTNMouse, releaseLeftBTNMouse } from '../utils/helpers/index.js';
 
-export const drawSquare = async (offset: string): Promise<void> => {
-    const w = parseInt(offset);
+export const drawSquare = async (offset: string[]): Promise<void> => {
+    const [value] = offset;
+    const w = parseInt(value);
 
     if (w) {
         mouse.config.mouseSpeed = Constants.MOUSE_SPEED;

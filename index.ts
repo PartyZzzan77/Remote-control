@@ -1,10 +1,11 @@
-import { processCommand } from './src/utils/helpers/processCommand.js';
-import WebSocket, { WebSocketServer } from 'ws';
 import { IncomingMessage } from 'http';
-import { httpServer } from './src/http_server/index.js';
-import { printWSParams } from './src/utils/helpers/printWSParams.js';
+import WebSocket, { WebSocketServer } from 'ws';
+
 import { HTTP_PORT, WSS_PORT } from './config.js';
+import { httpServer } from './src/http_server/index.js';
 import { commandHash } from './src/utils/commandsHash.js';
+import { printWSParams } from './src/utils/helpers/printWSParams.js';
+import { processCommand } from './src/utils/helpers/processCommand.js';
 
 httpServer.listen(HTTP_PORT);
 

@@ -1,6 +1,7 @@
-import { mouse, left, right, up, down } from '@nut-tree/nut-js';
-import { pressLeftBTNMouse, releaseLeftBTNMouse } from '../utils/helpers/index.js';
+import { down, left, mouse, right, up } from '@nut-tree/nut-js';
+
 import { Constants } from '../utils/constants.js';
+import { pressLeftBTNMouse, releaseLeftBTNMouse } from '../utils/helpers/index.js';
 
 export const drawRectangle = async (offset: string[]): Promise<void> => {
     const [w, h] = offset;
