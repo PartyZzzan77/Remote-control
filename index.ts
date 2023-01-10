@@ -10,22 +10,22 @@ import { processCommand } from './src/utils/helpers/processCommand.js';
 httpServer.listen(HTTP_PORT);
 
 const wss = new WebSocketServer({ port: WSS_PORT });
-const sockets: WebSocket[] = [];
 
 wss.on('connection', (ws: WebSocket, req: IncomingMessage) => {
     printWSParams(req);
+
+    console.log(wss.clients.size);
 
     ws.on('message', async (data) => {
         const [command, ...coordinates] = data.toString().split(' ');
         processCommand(ws, command, commandHash, coordinates);
     });
-
-    sockets.push(ws);
 });
 
 process.on('SIGINT', () => {
-    sockets.forEach((s) => s.close());
+    wss.clients.forEach(ws => ws.close());
     console.log('\x1b[33m', '\nGoodbye ✋🏻');
+
     process.exit(0);
 });
 
