@@ -13,9 +13,7 @@ const wss = new WebSocketServer({ port: WSS_PORT });
 
 wss.on('connection', (ws: WebSocket, req: IncomingMessage) => {
     printWSParams(req);
-
-    console.log(wss.clients.size);
-
+    
     ws.on('message', async (data) => {
         const [command, ...coordinates] = data.toString().split(' ');
         processCommand(ws, command, commandHash, coordinates);
