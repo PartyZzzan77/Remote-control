@@ -1,25 +1,25 @@
 import {
-    drawCircle,
-    drawRectangle,
-    drawSquare,
-    getMousePosition,
-    moveMouseDown,
-    moveMouseLeft,
-    moveMouseRight,
-    moveMouseUp,
-    printScreen,
+	drawCircle,
+	drawRectangle,
+	drawSquare,
+	getMousePosition,
+	moveMouseDown,
+	moveMouseLeft,
+	moveMouseRight,
+	moveMouseUp,
+	printScreen,
 } from '../handlers/index.js';
 
 export type TCommandHash = typeof commandHash;
 
 export const commandHash = {
-    mouse_position: getMousePosition,
-    draw_circle: drawCircle,
-    draw_square: drawSquare,
-    draw_rectangle: drawRectangle,
-    mouse_up: moveMouseUp,
-    mouse_down: moveMouseDown,
-    mouse_left: moveMouseLeft,
-    mouse_right: moveMouseRight,
-    prnt_scrn: printScreen,
+	mouse_position: getMousePosition,
+	draw_circle: drawCircle,
+	draw_square: drawSquare,
+	draw_rectangle: drawRectangle,
+	mouse_up: moveMouseUp,
+	mouse_down: moveMouseDown,
+	mouse_left: moveMouseLeft,
+	mouse_right: moveMouseRight,
+	prnt_scrn: printScreen,
 };
